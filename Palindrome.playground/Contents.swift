@@ -6,16 +6,8 @@ import Foundation
 // true if the string reads the same when reversed, ignoring case.
 
 func checkForPalindrome(string: String) -> Bool {
-    if string.count % 2 == 0 { return false }
-    var charArr = [Character]()
-    string.forEach { charArr.append($0) }
-    for i in 0..<string.count/2 {
-        let lastElement = charArr.count - 1
-        if charArr[i] != charArr[lastElement - i] {
-            return false
-        }
-    }
-    return true
+    let reversed = String(string.reversed())
+    return string == reversed
 }
 
 checkForPalindrome(string: "racecars") == false

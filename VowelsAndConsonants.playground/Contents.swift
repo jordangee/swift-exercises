@@ -1,23 +1,23 @@
 import UIKit
 import Foundation
 
-// Challenge 10: Vowels and Consonants
-// Write a function that returns a tuple containing the number of vowels and consonants.
+// Challenge 11: Three Different Letters
+// Write a function that accepts two strings, and returns true if they are
+// identical in length but have no more than three different letters.
 
-func splitVowelsAndConsonants(_ string: String) -> (Int, Int) {
-    var vowelCount = 0
-    var consCount = 0
-    let vowels = "aeiou"
-    let consonants = "bcdfghjklmnpqrstvwxyz"
+func identicalExceptThree(_ string1: String, _ string2: String) -> Bool {
+    var differenceCount = 0
+    if string1.count != string2.count { return false }
+    let arr1 = Array(string1)
+    let arr2 = Array(string2)
     
-    string.forEach {
-        if vowels.contains($0) { vowelCount += 1}
-        if consonants.contains($0) { consCount += 1}
+    for i in 0..<arr1.count {
+        if arr1[i] != arr2[i] { differenceCount += 1 }
     }
     
-    return (vowelCount, consCount)
+    return differenceCount < 4
 }
 
-splitVowelsAndConsonants("abcdefghijklmnopqrstuvwxyz") == (5, 21)
-splitVowelsAndConsonants("aeiou") == (5, 0)
-
+identicalExceptThree("abcabcabc", "abcabcdef") == true
+identicalExceptThree("abcabcabc", "abcabzzzz") == false
+identicalExceptThree("abcd", "abc") == false

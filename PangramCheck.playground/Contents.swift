@@ -5,6 +5,7 @@ import Foundation
 // Write a function that returns true if a given string is an English pangram.
 
 func isPangram(_ string: String) -> Bool {
+    if string.count < 26 { return false }
     var result = true
     let alphabet = "abcdefghijklmnopqrstuvwxyz"
     alphabet.forEach { if !string.contains($0) { result = false } }
